@@ -1,4 +1,8 @@
 def spravnost_matice(matica):
+    """
+    Kontroluje, či je matica konzistentná v počte buniek na každom riadku. V prípade, že sa riadky odlišujú počtom buniek,
+    funkcia vráti chybu.
+    """
     while True:
         dlzka = len(matica)
         for i in range(dlzka):
@@ -11,6 +15,10 @@ def spravnost_matice(matica):
 
 
 def spravnost_nasobenie(matica_a, matica_b):
+    """
+    Kontroluje, či je možné dve matice navzájom násobiť. V prípade, že to nie je možné, funkcia vráti chybu.
+    V prípade, že je možné matice násobiť, vráti hodnotu, koľko-krát prebehne opakovanie násobenia pre jednu bunku.
+    """
     if len(matica_a[0]) == len(matica_b):
         return len(matica_b)
     else:
@@ -19,6 +27,10 @@ def spravnost_nasobenie(matica_a, matica_b):
 
 
 def nasobenie_matic(matica_a, matica_b):
+    """
+    Funkcia násobí dve vložené matice. Zároveň aj kontroluje, pomocou funkcie "spravnost_nasobenie", či je ich možné
+    násobiť. Vracia zoznam s výslednou maticou, kde každý riadok je vlastný zoznam s bunkami oddelenými čiarkou.
+    """
     vyska_vysl = len(matica_a)
     sirka_vysl = len(matica_b[0])
     pocet_opakovani = spravnost_nasobenie(matica_a, matica_b)
@@ -37,9 +49,16 @@ def nasobenie_matic(matica_a, matica_b):
 
 
 def vlozenie_matice(nazov):
+    """
+    Funkcia prijímaod použivateľa maticu a pomocou funkcie "spravnost_matice" kontroluje, či je matica správne zadaná.
+    Pri vkladaní program vyzve použivateľa, aby zadal počet riadkov matice. Následne uživateľ zadáva jednotlivé riadky,
+    pričom hodnoty oddeľuje medzerou, riadky enterom.
+    Funkcia vracia zoznam s maticou, kde každý riadok je vlastný zoznam s bunkami oddelenými čiarkou, ktorá slúži vrámci
+    tohto programu k ďalšiemu spracovaniu.
+    """
     matica = []
     pocet_riadkov = int(input("Vložte počet riadkov matice {:s}: ".format(nazov)))
-    print("Vkladajte riadky")
+    print("Vkladajte riadky. Jednotlivé bunky oddeľujte medzerou.")
     for i in range(pocet_riadkov):
         zoznam = list(map(int, input().split()))
         matica.append(zoznam)
