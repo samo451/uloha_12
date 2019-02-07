@@ -1,8 +1,3 @@
-
-matica_A = [[2, 5, 8, -2, 8], [1,0, 0, 1, 8], [-5, 6, 8, 7, 4], [1, -9, -2, -1, 2], [1, 1, 1, 1, 1]]
-matica_B = [[1, 2, 5, 8, 8], [6, 8, 4, 1, -2], [5, 8, -1, -2,-1], [-8, -7, 5, 5, 4], [2, 4, 5, 8, 4]]
-
-
 def spravnost_matice(matica):
     while True:
         dlzka = len(matica)
@@ -19,7 +14,7 @@ def spravnost_nasobenie(matica_a, matica_b):
     if len(matica_a[0]) == len(matica_b):
         return len(matica_b)
     else:
-        print("Matice nie je možné násobiť navzájom")
+        print("Matice nie je možné navzájom násobiť")
         quit(2)
 
 
@@ -41,9 +36,17 @@ def nasobenie_matic(matica_a, matica_b):
     return sucin
 
 
-#spravnost_matice(matica_A)
-#spravnost_matice(matica_B)
-#spravnost_nasobenie(matica_A, matica_B)
+def vlozenie_matice(nazov):
+    matica = []
+    pocet_riadkov = int(input("Vložte počet riadkov matice {:s}: ".format(nazov)))
+    print("Vkladajte riadky")
+    for i in range(pocet_riadkov):
+        zoznam = list(map(int, input().split()))
+        matica.append(zoznam)
+    spravnost_matice(matica)
+    return matica
 
+matica_A = vlozenie_matice("A")
+matica_B = vlozenie_matice("B")
 vysledok = nasobenie_matic(matica_A, matica_B)
 print(vysledok)
