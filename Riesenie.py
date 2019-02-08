@@ -9,7 +9,7 @@ def spravnost_matice(matica):
             if len(matica[0]) == len(matica[i]):
                 continue
             else:
-                print("Zle vložená matica. Vkladajte podľa vzoru uvedeného v dokumentácii.")
+                print("Zle vložená matica. Vkladajte podľa vzoru uvedeného v dokumentácii!")
                 quit(1)
         break
 
@@ -22,7 +22,7 @@ def spravnost_nasobenie(matica_a, matica_b):
     if len(matica_a[0]) == len(matica_b):
         return len(matica_b)
     else:
-        print("Matice nie je možné navzájom násobiť")
+        print("Matice nie je možné navzájom násobiť!")
         quit(2)
 
 
@@ -57,10 +57,18 @@ def vlozenie_matice(nazov):
     tohto programu k ďalšiemu spracovaniu.
     """
     matica = []
-    pocet_riadkov = int(input("Vložte počet riadkov matice {:s}: ".format(nazov)))
+    try:
+        pocet_riadkov = int(input("Vložte počet riadkov matice {:s}: ".format(nazov)))
+    except ValueError:
+        print("Nezadali ste platné číslo!")
+        quit(3)
     print("Vkladajte riadky. Jednotlivé bunky oddeľujte medzerou.")
     for i in range(pocet_riadkov):
-        zoznam = list(map(int, input().split()))
+        try:
+            zoznam = list(map(float, input().split()))
+        except ValueError:
+            print("Zlé zadané hodnoty do matice")
+            quit(4)
         matica.append(zoznam)
     spravnost_matice(matica)
     return matica
